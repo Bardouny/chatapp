@@ -1,8 +1,9 @@
 *.exe
-deatastructers/
+deatastructurs/
 .vscode/
 *.jpg
 *.png
 *.jpeg
 go.mod
 go.sum
+
