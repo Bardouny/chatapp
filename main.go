@@ -95,5 +95,3 @@ func servUser(user *db.User) {
 	//delete(mydb.Users, user.Name)
 	mydb.UpdateUsersList()
 }
-
-// Chat room end point
