@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="slide hidden-in-small-screens "  >
+            <div>
+                <h3>Created by hbardouny@gmail.com </h3>
+                <p>
+                    Ensure if the main server listning <br>
+                    server readiy and <br>
+                    waiting for data... <br>
+                    <br>
+                    YOUR NAME IS :   {{.name}} . <br>
+                    YOUR PASSWORD IS :  *********** <br>
+                    PLEASE DONT SHARE IT .
+                </p>
+                <br>
+                <br>
+            </div>
+            <nav>
+                <h3>Recent Members </h3>
+            </nav>
+            <div>
+                <div class="friends-list" id="frls">
+                    no listners intel now <br>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <nav class="top-bar"> <h3>Chat Room</h3>  <span>  0  </span>  </nav>
+            <div class="hello-section hidden-in-small-screens">
+                <h2>
+                    Welcom To Server <br>
+                    pleas be respectful {{.name}} <br>
+                    Text answer <br>
+                    Ask if you want <br>
+                    And dont try to use N Word
+                </h2>
+            </div>
+            <div class="message-section">
+                <div class="message-sender">
+                    <button onclick="send()"> > </button>
+                    <input type="text" id="Msg">
+                </div>
+                <h1>Recently Chats :</h1>
+                
+            </div>
+        </div>
+    </div>
+    <input type="hidden" value={{.name}} id="hi1" >
+    <style>
+        * {
+            font-family: system-ui;
+            margin: 0%;
+            padding: 0%;
+        }
+
+        body{
+            background-color: #121212;
+            color: aliceblue;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 30% 70%;
+            color: aliceblue;
+        }
+
+        
+
+        /*
+        .container .slide {
+            background-color: blue;
+        }
+
+        .container .content {
+            background-color: red;
+        }
+            */
+
+        .top-bar {
+            background-color: #be2edd;
+            font-size: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+
+        }
+
+        .hello-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px;
+            height: 500px;
+            font-size: 30px;
+            border-bottom: 1px solid wheat ;
+        }
+
+        .message-section {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            padding: 10px;
+            overflow-y: scroll;
+            height: 50vh;
+            padding-bottom: 400px;
+        }
+
+
+        .message {
+            background-color: #313436;
+            max-width: 70%;
+            min-width: 50%;
+            min-height: 300px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 5px 5px rgba(253, 252, 252, 0.2);
+        }
+
+        .message nav {
+            background-color: rgb(3, 126, 226) ;
+            padding: 10px;
+            border-bottom: 1px solid white;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .message nav .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            font-size: 30px;
+            background-color: rgb(255, 136, 0);
+            text-align: center;
+            padding: 10px;
+            margin-right: 20px;
+
+        }
+
+        .message p {
+            padding: 10px;
+            font-size: 25px;
+        }
+
+        .your {
+            align-self: flex-end;
+            direction: rtl;
+        }
+
+        .your nav {
+            background-image : linear-gradient(to left ,green ,rgb(17, 247, 17));
+        }
+
+        .your nav .logo {
+            margin-left: 20px;
+        }
+
+        .message-sender {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            display: flex;
+            align-items: center;
+        }
+
+        .message-sender button {
+            background-color: rgb(41, 94, 41);
+            color: aliceblue;
+            margin-right: 10px;
+            border-radius: 50px;
+            font-size: 40px;
+            width: 70px;
+            height: 70px;
+            text-align: center;
+            border: 2px solid rgb(28, 184, 23);
+        }
+
+        .message-sender input {
+
+            height: 50px;
+            width: 300px;
+            border-radius: 10px;
+            outline: none;
+            border: 1px solid rgb(0, 0, 0);
+            box-shadow: 1px 1px 1px 1px rgba(255, 255, 255, 0.2);
+            font-size: 30px;
+            padding: 5px;
+        }
+
+        .slide {
+            border-right: 1px solid white;
+        }
+
+        .slide div {
+            border-bottom: 1px solid white;
+        }
+
+        .slide nav {
+            background-color: orange;
+            padding: 30px;
+            font-size: 30px;
+        }
+
+        .friends-list {
+            padding: 10px;
+        }
+
+        .friends-list .friend {
+            background-color: rgb(58, 58, 58);
+            padding: 10px;
+            margin: 20px;
+            height: 70px;
+            border: none;
+            box-shadow: 5px 5px 20px rgba(216, 216, 216, 0.288);
+            display: flex;
+            align-items: center;
+            column-gap: 40px;
+            padding-left: 40px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .friend::before {
+            content: "";
+            height: 100%;
+            background-color: green;
+            width: 5px;
+            position: absolute;
+            left: 0px;
+        }
+        
+
+        .friend .logo {
+            background-color: rgb(22, 22, 172);
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid white;
+            font-size: 30px;
+            text-transform: uppercase;
+        }
+
+        @media screen and (max-width: 800px) {
+            .hidden-in-small-screens {
+                display: none;
+            }
+
+            .container {
+                display: block;
+            }
+
+            .message {
+                max-width: 90%;
+                min-width: 80%;
+            }
+
+            .message-section {
+                height: 70vh;
+                width: 100%;
+                padding-bottom: 0px;
+            }
+            .message-sender {
+                left: 30px;
+            }
+        }
+    </style>
+
+    <script>
+
+        class Message {
+            
+            constructor(from , content) {
+                this.from = from
+                this.content = content
+                this.time = new Date().getTime()
+
+                if (this.from == userName) {
+                    this.your = true
+                } else {
+                    this.your = false
+                }
+            }
+
+            render() {
+                return `<div class="message ${this.your ? "your" : ""}">
+                    <nav>
+                        <span class="logo"> ${this.from[0]} </span>
+                        <h3> ${this.from} </h3>
+                    </nav>
+
+                    <p>
+                        ${this.content}
+                    </p>
+
+                </div>
+                `
+            }
+
+        }
+
+        let prohibitedWords = [
+            "bitch",
+            "fuck",
+            "hoor",
+            "gay",
+            "zbi",
+        ]
+
+        function checkProhibitedWords(message) {
+            for (let index = 0; index < prohibitedWords.length; index++) {
+                const element = prohibitedWords[index];
+                if (message.includes(element)) {
+                    return true
+                }
+            }
+            return false
+        }
+
+
+
+
+
+
+
+
+        var userName = document.getElementById("hi1").value
+        var frls = document.getElementById("frls")
+        var queryslink = `?name=${userName}`
+        var messageList = []
+        var ws = new WebSocket("/ws"+queryslink)
+        Msg = document.getElementById("Msg")
+        
+        ws.onopen = function () {
+            console.log("Connection opned.")
+        }
+
+        ws.error = function () {
+            console.log("error at connection")
+        }
+
+        ws.onmessage = function (e) {
+            let message = JSON.parse(atob(JSON.parse(e.data)))
+            let title = message.Title
+            if (title == "update-users") {
+                FillUsersQueue(message)
+            } else {
+                console.log(message.Body)
+                CreateMessage(message.Body)
+            }
+        }
+
+        ws.onclose = function () {
+            console.log("Connection closed.")
+            window.location.reload()
+        }
+
+        function send() {
+            let Msg = document.getElementById("Msg")
+            if (Msg.value == "") {
+                return
+            }
+
+            if (checkProhibitedWords(Msg.value.toLowerCase())) {
+                alert("You are not allowed to use this word")
+                Msg.value = ""
+                return
+            }
+            ws.send(Msg.value)
+        }
+
+        function FillFriends(obj) {
+            frls.innerHTML += `
+            <div class="friend">
+                <span class="logo"> ${obj.Name[0]} </span> ${obj.Name}
+            </div>
+            `
+        }
+
+        function FillUsersQueue(message) {
+            let friends = Object.values(message.Body)
+            frls.innerHTML = ""
+            for (let index = 0; index < friends.length; index++) {
+                const element = friends[index];
+                FillFriends(element)
+            }
+        }
+
+        // message section
+
+        function CreateMessage({From , Content}) {
+            let message = new Message(From , Content)
+            messageList.push(message)
+            UpdateChatContent()
+            
+        }
+
+        function UpdateChatContent() {
+            let chatContent = document.querySelector(".message-section")
+            chatContent.innerHTML = `
+                <div class="message-sender">
+                    <button onclick="send()"> > </button>
+                    <input type="text" id="Msg">
+                </div>
+                <h1>Recently Chats :</h1>
+            `
+            for (let index = 0; index < messageList.length; index++) {
+                const element = messageList[index];
+                chatContent.innerHTML += element.render()
+            }
+            
+        }
+
+        
+
+
+
+
+    </script>
+    
+</body>
+</html>

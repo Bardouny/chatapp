@@ -1,0 +1,16 @@
+* {
+    font-family: system-ui;
+}
+
+body {
+    display: flex;
+    height: 100%;
+}
+
+div {
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    font-size: 30px;
+    color: wheat;
+}
